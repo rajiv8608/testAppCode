@@ -1,0 +1,38 @@
+<div  style="display:inline-block;padding:15px">
+    <table border="1" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Asset Id</th>
+            <th>Asset Name</th>
+            <th>Purchased Date</th>
+          </tr>
+        </thead>
+        <tr *ngFor='let eachList of allList;let i = index' (mouseover)="displayButtons(i)" (mouseout)="hiddeButtons(i)">
+          <td>
+              <div *ngIf="!eachList.isEditable">{{eachList.assetsId}}</div>
+              <div *ngIf="eachList.isEditable">
+                  <input type="text" [(ngModel)]="eachList.assetsId">
+              </div>
+             
+          </td>
+          <td>
+              <div *ngIf="!eachList.isEditable">{{eachList.name}}</div>
+              <div *ngIf="eachList.isEditable">
+                  <input type="text" [(ngModel)]="eachList.name">
+              </div>
+         </td>
+         <td>
+           <div *ngIf="!eachList.isEditable">{{eachList.date}}</div>
+           <div *ngIf="eachList.isEditable">
+              <input type="text" [(ngModel)]="eachList.date">
+          </div>
+         </td>
+         <td [hidden]="!eachList.isHover">
+            <button (click)="isEditable(i)">Update</button>
+            <button (click)="isView(i)">View</button>
+           <button>delete</button>
+         </td>
+         </tr>
+        </table>
+
+</div>
